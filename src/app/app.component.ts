@@ -8,9 +8,6 @@ import { CommandService, CommandType, ExecuteResultType } from './services/comma
 })
 export class AppComponent {
   constructor(private commandService: CommandService) { }
-  title = 'test-workshop';
-
-  type: string;
 
   commandList = this.commandService.commandList;
 
