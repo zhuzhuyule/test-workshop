@@ -8,6 +8,6 @@
       (ngModelChange)="onExtendCommandChange($event)"
       [placeholder]="placeholder"
     />
-    <label *ngIf="canChange && i !== 0">{{ extendCommand }}</label>
+    <label class="extend-command" *ngIf="canChange && i !== 0">{{ extendCommand }}</label>
   </div>
 </div>
