@@ -1,10 +1,13 @@
 <div class="terminal">
-  <label>{{ command }}</label>
-  <input
-    *ngIf="canChange"
-    class="input-command"
-    [ngModel]="extendCommand"
-    (ngModelChange)="onExtendCommandChange($event)"
-    [placeholder]="placeholder"
-  />
+  <div *ngFor="let command of commands; let i = index">
+    <label>{{ command }}</label>
+    <input
+      *ngIf="canChange && i === 0"
+      class="input-command"
+      [ngModel]="extendCommand"
+      (ngModelChange)="onExtendCommandChange($event)"
+      [placeholder]="placeholder"
+    />
+    <label *ngIf="canChange && i !== 0">{{ extendCommand }}</label>
+  </div>
 </div>

@@ -6,10 +6,10 @@ import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
   styleUrls: ["./terminal.component.less"],
 })
 export class TerminalComponent implements OnInit {
-  constructor() {}
+  constructor() { }
 
-  ngOnInit() {}
-  @Input() command = "";
+  ngOnInit() { }
+  @Input() commands = [""];
   @Input() canChange = false;
   @Input() placeholder: string = "";
   @Input()
@@ -17,12 +17,12 @@ export class TerminalComponent implements OnInit {
     this.extendCommand = command;
   }
 
-  @Output() handleCommandChange = new EventEmitter<string>();
+  @Output() extendCommandChange = new EventEmitter<string>();
 
   extendCommand: string = "";
 
-  onExtendCommandChange(commend: string) {
-    this.extendCommand = commend;
-    this.handleCommandChange.emit(commend);
+  onExtendCommandChange(extendCommand: string) {
+    this.extendCommand = extendCommand;
+    this.extendCommandChange.emit(extendCommand);
   }
 }

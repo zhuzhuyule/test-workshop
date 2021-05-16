@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CommandService, CommandType } from './services/command.service';
 
 @Component({
   selector: 'app-root',
@@ -6,44 +7,30 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.less']
 })
 export class AppComponent {
+   constructor(private commandService: CommandService) {}
   title = 'test-workshop';
 
   type: string;
 
-  buttonList = [
-    {
-      type: 'component',
-      describe: 'Add Component',
-    },
-    {
-      type: 'service',
-      describe: 'Add Service',
-    },
-    {
-      type: 'pipe',
-      describe: 'Add Pipe',
-    },
-    {
-      type: 'directive',
-      describe: 'Add Drective',
-    },
-    {
-      type: 'start',
-      describe: 'Start Angular Server',
-    },
-    {
-      type: 'test',
-      describe: 'Run and Watch Tests',
-    },
-    {
-      type: 'build',
-      describe: 'Build for Production',
-    },
-  ]
+  commandList = this.commandService.commandList;
 
-  command: string;
+  commandItem: CommandType & { extendCommand: string } = {
+    ...this.commandService.commandList[0],
+    extendCommand: ''
+  };
 
-  onCommandChange(command: string) {
-    this.command = command;
+  onCommandChange (command: CommandType) {
+    this.commandItem = {
+      ...command,
+      extendCommand: '',
+    }
   }
+
+  onExtendCommandChange (extendCommand: string) {
+    this.commandItem = {
+      ...this.commandItem,
+      extendCommand,
+    }
+  }
+
 }
