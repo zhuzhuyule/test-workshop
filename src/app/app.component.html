@@ -17,6 +17,7 @@
   <div class="button-container">
     <app-command-button
       *ngFor="let command of commandList"
+      class="button"
       (click)="onCommandChange(command)"
     >
       {{ command.describe }}
@@ -26,20 +27,13 @@
   <!-- Terminal -->
   <app-terminal
     *ngIf="commandItem"
+    class="terminal"
     [commands]="commandItem.commands"
     [canChange]="commandItem.canChange"
     (extendCommandChange)="onExtendCommandChange($event)"
   ></app-terminal>
 
-  <label>You will get those files:</label>
-  <ul *ngIf="commandItem">
-    <li>Class: {{ commandItem.extendCommand | transferName: "class" }}</li>
-    <li>Dom: app-{{ commandItem.extendCommand | transferName }}</li>
-    <li>{{ commandItem.extendCommand | transferName }}.component.html</li>
-    <li>{{ commandItem.extendCommand | transferName }}.component.ts</li>
-    <li>{{ commandItem.extendCommand | transferName }}.component.spec.ts</li>
-    <li>{{ commandItem.extendCommand | transferName }}.component.css</li>
-  </ul>
+  <app-explorer class="explorer" path="/sdf/sdf//sdf" [files]="['abc.ts', 'abc.css']"></app-explorer>
 
   <router-outlet></router-outlet>
 </div>

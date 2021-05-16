@@ -8,13 +8,15 @@ import { TerminalComponent } from './components/terminal/terminal.component';
 import { CommonModule } from '@angular/common';
 import { TransferNamePipe } from './pipes/transfer-name.pipe';
 import { FormsModule } from '@angular/forms';
+import { ExplorerComponent } from './components/explorer/explorer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CommandButtonComponent,
     TransferNamePipe,
-    TerminalComponent
+    TerminalComponent,
+    ExplorerComponent
   ],
   imports: [
     BrowserModule,
