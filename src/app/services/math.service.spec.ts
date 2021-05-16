@@ -7,7 +7,7 @@ describe("MathService", () => {
   });
 
   it("#add should return 6 when the args are 1,2,3", () => {
-    expect(mathService.add()).toBe(6);
+    expect(mathService.add(1, 2, 3)).toBe(6);
   });
 
   it("#square should return 4 from a promise when the arg is 2", async () => {
