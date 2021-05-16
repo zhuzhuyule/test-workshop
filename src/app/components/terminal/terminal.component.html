@@ -1,0 +1,10 @@
+<div class="terminal">
+  <label>{{ command }}</label>
+  <input
+    *ngIf="canChange"
+    class="input-command"
+    [ngModel]="extendCommand"
+    (ngModelChange)="onExtendCommandChange($event)"
+    [placeholder]="placeholder"
+  />
+</div>
