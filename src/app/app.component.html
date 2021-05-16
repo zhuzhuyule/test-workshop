@@ -10,7 +10,7 @@
 </div>
 
 <div class="content" role="main">
-    <div class="button-container">
+  <div class="button-container">
     <app-command-button
       *ngFor="let command of commandList"
       class="button"
@@ -29,7 +29,12 @@
     (extendCommandChange)="onExtendCommandChange($event)"
   ></app-terminal>
 
-  <app-explorer class="explorer" [path]="executeResult?.path" [files]="executeResult?.files"></app-explorer>
+  <app-explorer
+    *ngIf="executeResult"
+    class="explorer"
+    [path]="executeResult.path"
+    [files]="executeResult.files"
+  ></app-explorer>
 
   <router-outlet></router-outlet>
 </div>

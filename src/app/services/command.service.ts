@@ -63,10 +63,12 @@ export class CommandService {
 
   transferPipe = new TransferNamePipe();
 
-  constructor() {
-  }
+  constructor() {}
 
-  executeCommand(commandType: string, extendCommand?: string): ExecuteResultType | null {
+  executeCommand(
+    commandType: string,
+    extendCommand?: string
+  ): ExecuteResultType | null {
     switch (commandType) {
       case CommandTypeEnum.component:
         return this.execCreateComponent(extendCommand);
@@ -83,47 +85,46 @@ export class CommandService {
 
   private execCreateComponent(name: string) {
     const transferName = this.transferPipe.transform(name);
-    return transferName ? {
+    return {
       path: transferName,
-      files: [
-        `${transferName}.component.html`,
-        `${transferName}.component.ts`,
-        `${transferName}.component.spec.ts`,
-        `${transferName}.component.css`,
-      ],
+      files: transferName
+        ? [
+            `${transferName}.component.html`,
+            `${transferName}.component.ts`,
+            `${transferName}.component.spec.ts`,
+            `${transferName}.component.css`,
+          ]
+        : [],
       class: this.transferPipe.transform(name, 'class'),
       dom: `app-${transferName}}`,
-    } : null;
+    };
   }
 
   private execCreateService(name: string) {
     const transferName = this.transferPipe.transform(name);
-    return transferName ? {
+    return {
       path: transferName,
-      files: [
-        `${transferName}.service.ts`,
-        `${transferName}.service.spec.ts`,
-      ],
-    } : null;
+      files: transferName
+        ? [`${transferName}.service.ts`, `${transferName}.service.spec.ts`]
+        : [],
+    };
   }
   private execCreatePipe(name: string) {
     const transferName = this.transferPipe.transform(name);
-    return transferName ? {
+    return {
       path: transferName,
-      files: [
-        `${transferName}.pipe.ts`,
-        `${transferName}.pipe.spec.ts`,
-      ],
-    } : null;
+      files: transferName
+        ? [`${transferName}.pipe.ts`, `${transferName}.pipe.spec.ts`]
+        : [],
+    };
   }
   private execCreateDirective(name: string) {
     const transferName = this.transferPipe.transform(name);
-    return transferName ? {
+    return {
       path: transferName,
-      files: [
-        `${transferName}.directive.ts`,
-        `${transferName}.directive.spec.ts`,
-      ],
-    } : null;
+      files: transferName
+        ? [`${transferName}.directive.ts`, `${transferName}.directive.spec.ts`]
+        : [],
+    };
   }
 }

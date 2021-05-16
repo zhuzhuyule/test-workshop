@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommandService, CommandType, ExecuteResultType } from './services/command.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { CommandService, CommandType, ExecuteResultType } from './services/comma
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.less']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   constructor(private commandService: CommandService) { }
 
   commandList = this.commandService.commandList;
@@ -15,12 +15,27 @@ export class AppComponent {
 
   executeResult: ExecuteResultType | null = null;
 
+
+  private _extendCommand: string = '';
+  get extendCommand() {
+    return this._extendCommand;
+  }
+  set extendCommand(command: string) {
+    this._extendCommand = command;
+    this.executeResult = this.commandService.executeCommand(this.commandItem.type, command);
+  }
+
+  ngOnInit() {
+    this.extendCommand = '';
+  }
+
   onCommandChange(command: CommandType) {
     this.commandItem = {...command};
+    this.onExtendCommandChange(this.extendCommand);
   }
 
   onExtendCommandChange(extendCommand: string) {
-    this.executeResult = this.commandService.executeCommand(this.commandItem.type, extendCommand);
+    this.extendCommand = extendCommand;
   }
 
 }
