@@ -16,7 +16,6 @@ export class CommandButtonComponent implements OnInit {
 
   @Output() handleClick = new EventEmitter<string>();
 
-
   onClick(): void {
     this.handleClick.emit(this.type);
   }
