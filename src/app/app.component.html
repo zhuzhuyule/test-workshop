@@ -18,7 +18,7 @@
     <app-command-button
       *ngFor="let command of commandList"
       class="button"
-      (click)="onCommandChange(command)"
+      (triggerClick)="onCommandChange(command)"
     >
       {{ command.describe }}
     </app-command-button>
@@ -33,7 +33,7 @@
     (extendCommandChange)="onExtendCommandChange($event)"
   ></app-terminal>
 
-  <app-explorer class="explorer" path="/sdf/sdf//sdf" [files]="['abc.ts', 'abc.css']"></app-explorer>
+  <app-explorer class="explorer" [path]="executeResult?.path" [files]="executeResult?.files"></app-explorer>
 
   <router-outlet></router-outlet>
 </div>

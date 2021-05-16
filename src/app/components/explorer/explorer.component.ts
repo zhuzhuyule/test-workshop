@@ -1,20 +1,22 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input, OnInit } from '@angular/core';
 
-import { basename, dirname } from "path";
+import { dirname } from 'path';
 
 @Component({
-  selector: "app-explorer",
-  templateUrl: "./explorer.component.html",
-  styleUrls: ["./explorer.component.less"],
+  selector: 'app-explorer',
+  templateUrl: './explorer.component.html',
+  styleUrls: ['./explorer.component.less'],
 })
 export class ExplorerComponent implements OnInit {
 
-  @Input() files: string[] = [];
+  @Input() files: string[] | null = [];
   @Input()
-  set path(path: string) {
-    this.folders = dirname(path)
-      .replace(/^[\\\/]/, "")
-      .split(/\/|\\/g) || [""];
+  set path(path: string | null) {
+    if (path) {
+      this.folders = this.splitPath(path);
+    } else {
+      this.folders = [];
+    }
   }
 
   folders: string[] = [];
@@ -22,4 +24,14 @@ export class ExplorerComponent implements OnInit {
   constructor() { }
 
   ngOnInit() { }
+
+  get isValid() {
+    return this.files && this.files.length;
+  }
+
+  private splitPath(path: string) {
+    return dirname(`${path}/$`)
+      .replace(/^[\\\/]/, '')
+      .split(/\/|\\/g) || [''];
+  }
 }

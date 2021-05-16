@@ -1,4 +1,11 @@
-<ng-container *ngTemplateOutlet="folderRef; context: { $implicit: 0 }"></ng-container>
+<ng-container *ngIf="isValid; else invalidInfoRef">
+  <ng-container *ngTemplateOutlet="folderRef; context: { $implicit: 0 }"></ng-container>
+</ng-container>
+
+<ng-template #invalidInfoRef>
+  <label style="padding: 10px;">无效的命令</label>
+</ng-template>
+
 
 <ng-template #folderRef let-pathDeep>
   <div *ngIf="folders[pathDeep]; else fileRef" class="path">
@@ -12,13 +19,5 @@
   <div class="files" *ngFor="let file of files">
     <img class="icon" src="/assets/file.svg" alt="" />
     {{ file }}
-    <ul *ngIf="commandItem">
-      <!-- <li>Class: {{ commandItem.extendCommand | transferName: "class" }}</li>
-      <li>Dom: app-{{ commandItem.extendCommand | transferName }}</li>
-      <li>{{ commandItem.extendCommand | transferName }}.component.html</li>
-      <li>{{ commandItem.extendCommand | transferName }}.component.ts</li>
-      <li>{{ commandItem.extendCommand | transferName }}.component.spec.ts</li>
-      <li>{{ commandItem.extendCommand | transferName }}.component.css</li> -->
-    </ul>
   </div>
 </ng-template>

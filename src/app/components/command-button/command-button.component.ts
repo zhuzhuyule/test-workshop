@@ -9,14 +9,14 @@ export class CommandButtonComponent implements OnInit {
 
   constructor() { }
 
+  @Input() type: string;
+
+  @Output() triggerClick = new EventEmitter<string>();
+
   ngOnInit() {
   }
 
-  @Input() type: string;
-
-  @Output() click = new EventEmitter<string>();
-
   onClick(): void {
-    this.click.emit(this.type);
+    this.triggerClick.emit(this.type);
   }
 }
