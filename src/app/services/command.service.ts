@@ -101,8 +101,8 @@ export class CommandService {
     return transferName ? {
       path: transferName,
       files: [
-        `${transferName}}.service.ts`,
-        `${transferName}}.service.spec.ts`,
+        `${transferName}.service.ts`,
+        `${transferName}.service.spec.ts`,
       ],
     } : null;
   }
@@ -111,8 +111,8 @@ export class CommandService {
     return transferName ? {
       path: transferName,
       files: [
-        `${transferName}}.pipe.ts`,
-        `${transferName}}.pipe.spec.ts`,
+        `${transferName}.pipe.ts`,
+        `${transferName}.pipe.spec.ts`,
       ],
     } : null;
   }
@@ -121,8 +121,8 @@ export class CommandService {
     return transferName ? {
       path: transferName,
       files: [
-        `${transferName}}.directive.ts`,
-        `${transferName}}.directive.spec.ts`,
+        `${transferName}.directive.ts`,
+        `${transferName}.directive.spec.ts`,
       ],
     } : null;
   }
