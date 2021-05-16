@@ -40,4 +40,10 @@ export class AppComponent {
       describe: 'Build for Production',
     },
   ]
+
+  command: string;
+
+  onCommandChange(command: string) {
+    this.command = command;
+  }
 }
