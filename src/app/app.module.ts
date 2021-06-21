@@ -12,11 +12,11 @@ import { ExplorerComponent } from './components/explorer/explorer.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
     CommandButtonComponent,
     TransferNamePipe,
     TerminalComponent,
-    ExplorerComponent
+    ExplorerComponent,
+    AppComponent,
   ],
   imports: [
     BrowserModule,
