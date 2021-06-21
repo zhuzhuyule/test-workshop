@@ -25,4 +25,10 @@ describe("TriangleService", () => {
       done();
     });
   });
+  it("#pythagorean will retrun result square equal 2.2 * 2.2 + 4.3 * 4.3", (done: DoneFn) => {
+    triangleService.pythagorean(2.2, 4.3).subscribe((result) => {
+      expect(2.2*2.2 + 4.3*4.3).toBeCloseTo(result * result);
+      done();
+    });
+  });
 });
